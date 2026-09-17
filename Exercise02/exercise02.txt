@@ -1,1 +1,22 @@
+#include <omp.h>
+#include <stdio.h>
 
+int main()
+{
+    #pragma omp parallel
+    {
+        int th = omp_get_thread_num();
+
+        printf("Before Single - thread # %d\n", th);
+
+        #pragma omp single
+        {
+            printf("Inside Single - thread # %d\n",
+                   omp_get_thread_num());
+        }
+
+        printf("After Single - thread # %d\n", th);
+    }
+
+    return 0;
+}
