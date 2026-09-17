@@ -1,1 +1,18 @@
 
+#include <stdio.h>
+#include <omp.h>
+
+int main()
+{
+    #pragma omp parallel for
+    for (int r = 0; r < 5; r++)
+    {
+        for (int k = 0; k < 10; k++)
+        {
+            printf("Thread %d: r=%d k=%d\n",
+                   omp_get_thread_num(), r, k);
+        }
+    }
+
+    return 0;
+}
